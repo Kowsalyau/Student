@@ -2,11 +2,9 @@ package com.example.student.response;
 
 public class ApiResponse<T> {
 
-    private String status;
-    private String message;
-    private T data;
-
-    public ApiResponse() {}
+    private final String status;
+    private final String message;
+    private final T data;
 
     public ApiResponse(String status, String message, T data) {
         this.status = status;
@@ -14,27 +12,20 @@ public class ApiResponse<T> {
         this.data = data;
     }
 
-    public String getStatus() {
-        return status;
+ 
+    public static <T> ApiResponse<T> of(String status, String message, T data) {
+        return new ApiResponse<>(status, message, data);
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getStatus() {
+        return status;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public T getData() {
         return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 }
